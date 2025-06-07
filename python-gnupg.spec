@@ -1,8 +1,11 @@
-Name:           python-gnupg
-Version:        2.3.1
-Release:        1
-Source0:        https://files.pythonhosted.org/packages/source/i/%{pypi_name}/%{oname}-%{version}.tar.gz
+%define pypi_name       gnupg
+%define oname   gnupg
 
+
+Name:           python-gnupg
+Version:        0.5.4
+Release:        1
+Source0:        https://github.com/vsajip/python-gnupg/archive/refs/tags/%{version}.tar.gz
 Summary:        A Python wrapper for GnuPG
 URL:            https://pypi.org/project/gnupg/
 License:        BSD
@@ -23,7 +26,6 @@ Requires:       python
 A Python wrapper for GnuPG
 
 %files
-%{py_sitedir}/gnupg
-%{py_sitedir}/gnupg-*.egg-info
-/usr/bin/versioneer.py
-
+%{py_sitedir}/__pycache__
+%{py_sitedir}/gnupg.py
+%{py_sitedir}/python_gnupg-*.dist-info

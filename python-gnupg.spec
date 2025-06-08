@@ -1,7 +1,7 @@
 Name:           python-gnupg
 Version:        0.5.4
 Release:        1
-Source0:        https://github.com/vsajip/python-gnupg/releases/download/%{version}/python-gnupg-%{ve>
+Source0:        https://github.com/vsajip/python-gnupg/releases/download/%{version}/python-gnupg-%{version}.tar.gz
 Summary:        A Python wrapper for GnuPG
 URL:            https://pypi.org/project/gnupg/
 License:        BSD  

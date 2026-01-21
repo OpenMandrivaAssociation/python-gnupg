@@ -1,13 +1,14 @@
+%define oname python_gnupg
 %bcond tests 1
 
 Name:           python-gnupg
-Version:        0.5.5
+Version:        0.5.6
 Release:        1
 Summary:        A Python wrapper for GnuPG
 License:        BSD-3-Clause
 Group:          Development/Python
 URL:            https://docs.red-dove.com/python-gnupg/
-Source0:        https://github.com/vsajip/python-gnupg/releases/download/%{version}/python-gnupg-%{version}.tar.gz
+Source0:        https://github.com/vsajip/python-gnupg/archive/%{version}/%{name}-%{version}.tar.gz
 BuildSystem:    python
 BuildArch:      noarch
 BuildRequires:  gnupg
@@ -28,6 +29,7 @@ A Python wrapper for GnuPG
 %if %{with tests}
 %check
 export CI=true
+export PYTHONPATH="%{buildroot}%{python_sitelib}:${PWD}"
 export NO_EXTERNAL_TESTS=true
 # skip flaky test
 pytest -v test_gnupg.py -k "not test_auto_key_locating"
@@ -38,4 +40,4 @@ pytest -v test_gnupg.py -k "not test_auto_key_locating"
 %license LICENSE.txt
 %{python_sitelib}/__pycache__/gnupg.*.pyc
 %{python_sitelib}/gnupg.py
-%{python_sitelib}/python_gnupg-%{version}.dist-info
+%{python_sitelib}/%{oname}-%{version}.dist-info

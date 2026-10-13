@@ -2,7 +2,7 @@
 %bcond tests 1
 
 Name:           python-gnupg
-Version:        0.5.6
+Version:        0.5.7
 Release:        1
 Summary:        A Python wrapper for GnuPG
 License:        BSD-3-Clause
@@ -25,6 +25,13 @@ Requires:       gnupg
 
 %description
 A Python wrapper for GnuPG
+
+%prep -a
+# 0.5.7 caps setuptools below 75. Cooker setuptools is 84, and this
+# package is a single module that does not need the cap.
+sed -i 's/setuptools >= 68,<75/setuptools >= 68/' pyproject.toml
+# The key is missing its equals sign, which setuptools rejects.
+sed -i 's/^requires_python >= 2.7/requires_python = >=2.7/' setup.cfg
 
 %if %{with tests}
 %check
